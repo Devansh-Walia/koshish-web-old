@@ -1,0 +1,33 @@
+{
+    "extends": [
+        "plugin:astro/recommended",
+        "prettier-plugin-astro"
+    ],
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "env": {
+        "es6": true
+    },
+    "overrides": [
+        {
+            "files": [
+                "*.astro"
+            ],
+            "parser": "astro-eslint-parser",
+            "parserOptions": {
+                "parser": "@typescript-eslint/parser",
+                "extraFileExtensions": [
+                    ".astro"
+                ]
+            }
+        }
+    ],
+    "rules": {
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "import/no-duplicates": "error",
+        "no-unused-vars": "off",
+        "no-empty-function": "off"
+    }
+}
