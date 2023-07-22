@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.line-effect {
+	@apply relative after:absolute after:bottom-0 after:right-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary after:transition-all after:content-[''] group-hover:after:w-full;
+}
+
+.page-active {
+	@apply relative after:absolute after:bottom-0 after:right-0 after:left-0 after:h-[1px] after:w-full after:bg-primary after:content-[''];
+}
+
+* {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
