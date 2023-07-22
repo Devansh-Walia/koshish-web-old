@@ -1,0 +1,77 @@
+---
+import CenteredLayout from '@components/shared/CenteredLayout.astro'
+import PageRoutes from '@data/route'
+import { navigation } from '@data/header'
+import Burger from './icons/Burger.astro';
+
+const currentPath = Astro.url.pathname
+---
+
+<script>
+	const content = document.getElementById('content')
+
+	document.addEventListener('click', (e: any) => {
+		if (e.target.id !== 'content') {
+			content!.classList.add('hidden')
+		}
+	})
+</script>
+
+<CenteredLayout as="header">
+	<nav class="flex h-20 items-center justify-between">
+		<a href={PageRoutes.HOME}>
+			<img src="/images/logo.png" loading="lazy" alt="Koshish Family logo" class="w-12 lg:w-16" />
+		</a>
+        
+<div class="hidden h-full space-x-8 md:flex">
+	{
+		navigation.map((navigation) => {
+			const { label, href } = navigation
+
+				return (
+					<a class=" group flex h-full items-center font-jost capitalize lg:text-xl" href={href}>
+						<span
+							class={`line-effect ${
+								currentPath === href || currentPath === href + '/' ? 'page-active' : ''
+							}`}
+						>
+							{label}
+						</span>
+					</a>
+				)
+			}
+		)
+	}
+</div>
+		
+
+
+<div id="headerMenu" class="group relative flex h-full items-center md:hidden">
+	<button
+		aria-label="toggle"
+		id="toggle"
+		class="rounded-full p-2 text-primary group-hover:bg-primary group-hover:text-white"
+	>
+		<Burger width={24} height={24} />
+	</button>
+
+	<div
+		id="content"
+		class="absolute right-5 top-16 z-10 hidden w-full min-w-max divide-y rounded-lg bg-white p-4 shadow-light group-hover:block"
+	>
+		{
+			navigation.map((navigation) => {
+				const { label, href } = navigation
+
+					return (
+						<a class="block w-full px-5 pt-4 pb-2 font-semibold capitalize" href={href}>
+							{label}
+						</a>
+					)
+				}
+			)
+		}
+	</div>
+</div>
+	</nav>
+</CenteredLayout>
