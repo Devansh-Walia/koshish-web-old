@@ -1,0 +1,9 @@
+---
+interface Props {
+	as?: 'section' | 'div' | 'footer' | 'header'
+}
+const { as = 'section' } = Astro.props
+const SectionElement = as
+---
+
+<SectionElement class="max-w-screen-xl m-auto px-4"><slot /></SectionElement>
