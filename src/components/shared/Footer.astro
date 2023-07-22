@@ -1,0 +1,47 @@
+---
+import CenteredLayout from '@components/shared/CenteredLayout.astro'
+import PageRoutes from '@data/route'
+import { navigation } from 'src/data/header'
+import { socialLinks} from 'src/data/footer'
+---
+
+<CenteredLayout as="footer">
+	<hr class="my-6" />
+	<div class="justify-between flex">
+		<div class="relative">
+			<a class="md:items-center" href={PageRoutes.HOME}>
+				<img loading="lazy" src="/images/logo.png" alt="koshish Family Logo" class="w-20 md:w-28" />
+			</a>
+		</div>
+		<div class="hidden space-x-8 md:flex flex-wrap">
+			{
+				navigation.map((navigation) => {
+					const { label, href } = navigation
+		
+						return (
+							<a class="group flex h-full items-center font-jost capitalize lg:text-xl" href={href}>
+								{label}
+							</a>
+						)
+					}
+				)
+			}
+		</div>
+	</div>
+	<div class="mt-6 w-full items-center justify-between border-t md:flex">
+		<p class="p-2 text-center text-xs font-medium md:p-0 md:text-sm">
+			© {new Date().getFullYear()} Koshish Family
+		</p>
+		<div class="flex w-full items-center justify-center space-x-4 border-t py-4 md:w-max md:border-none">
+			{
+				socialLinks.map((socialLink) => {
+					return (
+						<a href={socialLink.href} class={socialLink.href === '#' ? 'pointer-events-none' : ''}>
+							<img loading="lazy" src={socialLink.icon} alt={socialLink.title} />
+						</a>
+					)
+				})
+			}
+		</div>
+	</div>
+</CenteredLayout>
