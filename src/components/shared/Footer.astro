@@ -1,32 +1,45 @@
 ---
 import CenteredLayout from '@components/shared/CenteredLayout.astro'
 import PageRoutes from '@data/route'
-import { navigation } from 'src/data/header'
 import { socialLinks} from 'src/data/footer'
+
+interface ContactFormData {
+    name: string;
+    email: string;
+    message: string;
+}
+
+function handleContactSubmit(event: Event) {
+    event.preventDefault();
+    // Placeholder function to simulate an API call for the form submission
+    // TODO: Replace with actual API call
+    console.log("Form submitted!");
+    // Extract form data and make an API call
+    // ...
+}
 ---
 
 <CenteredLayout as="footer">
 	<hr class="my-6" />
-	<div class="justify-between flex">
-		<div class="relative">
-			<a class="md:items-center" href={PageRoutes.HOME}>
-				<img loading="lazy" src="/images/logo.png" alt="koshish Family Logo" class="w-20 md:w-28" />
-			</a>
+	<div class="justify-center flex flex-col md:flex-row">
+		<div class="w-full flex items-center justify-center">
+			<form @submit={handleContactSubmit} class="w-full md:w-1/2">
+				<div class="mb-4">
+					<label for="name" class="block mb-2">Name:</label>
+					<input type="text" id="name" name="name" class="w-full p-2 border rounded" required />
+				</div>
+				<div class="mb-4">
+					<label for="email" class="block mb-2">Email:</label>
+					<input type="email" id="email" name="email" class="w-full p-2 border rounded" required />
+				</div>
+				<div class="mb-4">
+					<label for="message" class="block mb-2">Message:</label>
+					<textarea id="message" name="message" class="w-full p-2 border rounded" rows="4" required></textarea>
+				</div>
+				<button type="submit" class="p-2 bg-primary text-white rounded hover:bg-primary-dark">Submit</button>
+			</form>
 		</div>
-		<div class="hidden space-x-8 md:flex flex-wrap">
-			{
-				navigation.map((navigation) => {
-					const { label, href } = navigation
-		
-						return (
-							<a class="group flex h-full items-center font-jost capitalize lg:text-xl" href={href}>
-								{label}
-							</a>
-						)
-					}
-				)
-			}
-		</div>
+		<div class="w-full">#add map here</div>
 	</div>
 	<div class="mt-6 w-full items-center justify-between border-t md:flex">
 		<p class="p-2 text-center text-xs font-medium md:p-0 md:text-sm">
