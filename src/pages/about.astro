@@ -1,6 +1,9 @@
 ---
+import Timeline from "@components/time-line";
 import Layout from "../layouts/Layout.astro"
+import {TimeLineData} from '../components/time-line/data'
 ---
 
 <Layout title="About">
+    <Timeline data={TimeLineData} client:visible />
 </Layout>
