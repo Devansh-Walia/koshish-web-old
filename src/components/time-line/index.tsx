@@ -67,7 +67,7 @@ const Timeline = ({ data }: { data: TimeLineDataType[] }) => {
 				<div className="mx-auto md:w-8/12 lg:w-6/12">
 					<ul className="space-y-5">
 						{data.map((item, index) => (
-							<TimelineItem key={index} left={index % 2 === 0} date={item.year} title="Event Title">
+							<TimelineItem key={index} left={index % 2 === 0} date={item.year} title={item.title}>
 								{item.details}
 							</TimelineItem>
 						))}
